@@ -1,13 +1,6 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/6ndC2138)
 
-# Final Project: AI for Social Good - Energy and Settlement Detection
-
-### Team Do Social Good
-
-- **Loi Nguyen**
-- **Kai Yu**
-- **Ky-Anh Ho**
-- **Yunzhe Li**
+# Energy and Settlement Detection
 
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
 ![PyTorch Lightning](https://img.shields.io/badge/PyTorch_Lightning-%237382F6.svg?style=for-the-badge&logoColor=white)
@@ -105,20 +98,3 @@ This project makes use of the base Unet3+ implementation described in the follow
 
 Basic `README.md` layout inspiration was taken from the SegmentAnything Model (SAM):
 [https://github.com/facebookresearch/segment-anything](https://github.com/facebookresearch/segment-anything)
-
-Furthermore, we would like to give acknowledgements to CS 175 Spring Quarter course staff for help and guidance.
-
-## Citation
-
-- Nguyen, L., Yu, K., Ho, K., Li, Y., 2024: final-project-do-social-good. GitHub repository, accessed 12 June 2024,
-
-```
-@misc{final-project-do-social-good,
-  author = {Nguyen, Loi and Yu, Kai and Ho, Ky-anh and Li, Yunzhe},
-  title = {final-project-do-social-good},
-  year = {2024},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/cs175cv-s2024/final-project-do-social-good}},
-}
-```
