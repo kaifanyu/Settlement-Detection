@@ -22,9 +22,9 @@ def main(options):
         slice_size=options.slice_size,
         train_size=1.0
     )
+    
     datamodule.prepare_data()
     datamodule.setup("test")
-    
 
     model = ESDSegmentation.load_from_checkpoint(options.model_path)
     model.eval()

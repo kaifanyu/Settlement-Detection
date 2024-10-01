@@ -85,6 +85,7 @@ class ESDDataModule(pl.LightningDataModule):
         processed_dir: Path,
         raw_dir: Path,
         batch_size: int = 32,
+        num_workers: int = 15,
         seed: int = 12378921,
         selected_bands: Dict[SatelliteType, List[str]] = None,
         slice_size: Tuple[int, int] = (4, 4),
@@ -111,6 +112,8 @@ class ESDDataModule(pl.LightningDataModule):
 
         self.train_dir = self.processed_dir / "Train"
         self.val_dir = self.processed_dir / "Val"
+        
+        self.num_workers = num_workers
 
     # given
     def load_and_preprocess(
@@ -178,7 +181,10 @@ class ESDDataModule(pl.LightningDataModule):
             # The arrays will be the above list, the test_size will be 1 - train size, and the random_state will be the seed.
             # The output of this function will be a tuple, (tile directories for training the model, tile directories for validating the model).
             # Save the output into the two variables tile_dirs_train and tile_dirs_val.
-            tile_dirs_train,tile_dirs_val = train_test_split(tile_dirs,test_size=1-self.train_size,random_state=self.seed)
+            if self.train_size == 1:
+                tile_dirs_train, tile_dirs_val = tile_dirs, []
+            else:
+                tile_dirs_train,tile_dirs_val = train_test_split(tile_dirs,test_size=1-self.train_size,random_state=self.seed)
 
             # We have now created the train test split. We are going to subtile and save these into
             # the self.train_dir and self.val_dir
@@ -209,7 +215,14 @@ class ESDDataModule(pl.LightningDataModule):
         """
         Create the self.train_dataset and self.val_dataset.
         """
-        if stage == "fit":
+        if stage == "test":
+            self.test_dataset = ESDDataset(
+                self.train_dir,
+                transform=self.transform,
+                satellite_type_list=self.satellite_type_list,
+                slice_size=self.slice_size,
+            )
+        elif stage == "fit":
             # --- start here ---
             # create the train ESDDataset (the processed_dir will be the train_dir)
             self.train_dataset = ESDDataset(processed_dir=self.train_dir,transform=self.transform,satellite_type_list=self.satellite_type_list,slice_size=self.slice_size)
@@ -217,17 +230,26 @@ class ESDDataModule(pl.LightningDataModule):
             # create the val ESDDataset (the processed_dir will be the val_dir)
             self.val_dataset = ESDDataset(processed_dir=self.val_dir,transform=self.transform,satellite_type_list=self.satellite_type_list,slice_size=self.slice_size)
 
-
     def train_dataloader(self) -> torch.utils.data.DataLoader:
         """
         Creates and returns a DataLoader with self.train_dataset
         """
         # create the torch.utils.data.Dataloader for the train_dataset, passing the batch size
         # and collate_fn
-        train_dl = torch.utils.data.DataLoader(persistent_workers=True, num_workers=4, dataset=self.train_dataset,batch_size=self.batch_size,collate_fn=collate_fn)
+        #Change num_workers to self.num_workers when testing, 0 for gradescope
+        train_dl = torch.utils.data.DataLoader(dataset=self.train_dataset,batch_size=self.batch_size,num_workers=0,collate_fn=collate_fn)
         
         return train_dl
     
+    def test_dataloader(self) -> torch.utils.data.DataLoader:
+        """
+        Creates and returns a DataLoader with self.train_dataset
+        """
+        # create the torch.utils.data.Dataloader for the train_dataset, passing the batch size
+        # and collate_fn
+        test_dl = torch.utils.data.DataLoader(dataset=self.test_dataset,batch_size=self.batch_size,num_workers=0,collate_fn=collate_fn)
+        
+        return test_dl
 
     def val_dataloader(self) -> torch.utils.data.DataLoader:
         """
@@ -235,6 +257,7 @@ class ESDDataModule(pl.LightningDataModule):
         """
         # create the torch.utils.data.Dataloader for the val_dataset, passing the batch size
         # and collate_fn
-        val_dl = torch.utils.data.DataLoader(persistent_workers=True, num_workers=4, dataset=self.val_dataset,batch_size=self.batch_size,collate_fn=collate_fn)
+        #Change num_workers to self.num_workers when testing, 0 for gradescope
+        val_dl = torch.utils.data.DataLoader(dataset=self.val_dataset,batch_size=self.batch_size,num_workers=0,collate_fn=collate_fn)
         
         return val_dl

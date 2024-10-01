@@ -1,0 +1,29 @@
+Checkpoint file:
+https://drive.google.com/file/d/14qK-1YnK4CRynyXB47MPp06MtgrRNrjX/view?usp=sharing
+
+Model Summary:
+14 ┏━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓
+15 ┃    ┃ Name                       ┃ Type                    ┃ Params ┃
+16 ┡━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩
+17 │ 0  │ model                      │ FCNResnetTransfer       │ 54.6 M │
+18 │ 1  │ model.model                │ FCN                     │ 54.6 M │
+19 │ 2  │ model.model.backbone       │ IntermediateLayerGetter │ 42.8 M │
+20 │ 3  │ model.model.classifier     │ FCNHead                 │  9.4 M │
+21 │ 4  │ model.model.aux_classifier │ FCNHead                 │  2.4 M │
+22 │ 5  │ model.pool                 │ MaxPool2d               │      0 │
+23 │ 6  │ train_jaccard              │ MulticlassJaccardIndex  │      0 │
+24 │ 7  │ train_accuracy             │ MulticlassAccuracy      │      0 │
+25 │ 8  │ train_f1score              │ MulticlassF1Score       │      0 │
+26 │ 9  │ val_accuracy               │ MulticlassAccuracy      │      0 │
+27 │ 10 │ val_auroc                  │ MulticlassAUROC         │      0 │
+28 │ 11 │ val_f1score                │ MulticlassF1Score       │      0 │
+29 └────┴────────────────────────────┴─────────────────────────┴────────┘ 
+30 Trainable params: 54.6 M
+31 Non-trainable params: 0
+32 Total params: 54.6 M 
+
+Metrics:
+Val F1: 0.5389
+Val Accuracy: 0.5389
+Train F1: 0.6958
+Train Accuracy: 0.6958

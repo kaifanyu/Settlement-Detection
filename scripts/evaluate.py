@@ -17,21 +17,25 @@ def main(options):
         selected_bands=options.selected_bands,
         batch_size=options.batch_size,
         slice_size=options.slice_size,
-        train_size=1.0
+        train_size=1
     )
         
     # prepare data
     datamodule.prepare_data()
+    datamodule.setup('fit')
     # load model from checkpont
     model = ESDSegmentation.load_from_checkpoint(checkpoint_path=options.model_path)
     # set model to eval mode
     model.eval()
 
     # get a list of all processed tiles
-    processed_tiles = Path(options.processed_dir).rglob('*.pt')
+    processed_tiles = Path(options.processed_dir).rglob('*')
     # for each tile
     for tile in processed_tiles:
-        restitch_and_plot(options=options, datamodule=datamodule, model=model, parent_tile_id=tile)
+        tile_name = str(tile).split('\\')
+        for t in tile_name:
+            if t.startswith('Tile'):
+                restitch_and_plot(options=options, datamodule=datamodule,results_dir=config.results_dir, model=model, parent_tile_id=t, accelerator=config.accelerator)
         # run restitch and plot
 
     # return NotImplementedError

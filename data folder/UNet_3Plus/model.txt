@@ -1,0 +1,135 @@
+Checkpoint file:
+https://drive.google.com/file/d/1bk265qElgRY3FdN9Vn91hqH8eVwKZXEr/view?usp=sharing
+
+
+Model Summary:
+  11 ┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓
+  12 ┃     ┃ Name                  ┃ Type                   ┃ Params ┃
+  13 ┡━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩
+  14 │ 0   │ model                 │ UNet_3Plus             │ 27.0 M │
+  15 │ 1   │ model.conv1           │ unetConv2              │ 94.3 K │
+  16 │ 2   │ model.conv1.conv1     │ Sequential             │ 57.2 K │
+  17 │ 3   │ model.conv1.conv2     │ Sequential             │ 37.1 K │
+  18 │ 4   │ model.maxpool1        │ MaxPool2d              │      0 │
+  19 │ 5   │ model.conv2           │ unetConv2              │  221 K │
+  20 │ 6   │ model.conv2.conv1     │ Sequential             │ 74.1 K │
+  21 │ 7   │ model.conv2.conv2     │ Sequential             │  147 K │
+  22 │ 8   │ model.maxpool2        │ MaxPool2d              │      0 │
+  23 │ 9   │ model.conv3           │ unetConv2              │  886 K │
+  24 │ 10  │ model.conv3.conv1     │ Sequential             │  295 K │
+  25 │ 11  │ model.conv3.conv2     │ Sequential             │  590 K │
+  26 │ 12  │ model.maxpool3        │ MaxPool2d              │      0 │
+  27 │ 13  │ model.conv4           │ unetConv2              │  3.5 M │
+  28 │ 14  │ model.conv4.conv1     │ Sequential             │  1.2 M │
+  29 │ 15  │ model.conv4.conv2     │ Sequential             │  2.4 M │
+  30 │ 16  │ model.maxpool4        │ MaxPool2d              │      0 │
+  31 │ 17  │ model.conv5           │ unetConv2              │ 14.2 M │
+  32 │ 18  │ model.conv5.conv1     │ Sequential             │  4.7 M │
+  33 │ 19  │ model.conv5.conv2     │ Sequential             │  9.4 M │
+  34 │ 20  │ model.h1_PT_hd4       │ MaxPool2d              │      0 │
+  35 │ 21  │ model.h1_PT_hd4_conv  │ Conv2d                 │ 36.9 K │
+  36 │ 22  │ model.h1_PT_hd4_bn    │ BatchNorm2d            │    128 │
+  37 │ 23  │ model.h1_PT_hd4_relu  │ ReLU                   │      0 │
+  38 │ 24  │ model.h2_PT_hd4       │ MaxPool2d              │      0 │
+  39 │ 25  │ model.h2_PT_hd4_conv  │ Conv2d                 │ 73.8 K │
+  40 │ 26  │ model.h2_PT_hd4_bn    │ BatchNorm2d            │    128 │
+  41 │ 27  │ model.h2_PT_hd4_relu  │ ReLU                   │      0 │
+  42 │ 28  │ model.h3_PT_hd4       │ MaxPool2d              │      0 │
+  43 │ 29  │ model.h3_PT_hd4_conv  │ Conv2d                 │  147 K │
+  44 │ 30  │ model.h3_PT_hd4_bn    │ BatchNorm2d            │    128 │
+  45 │ 31  │ model.h3_PT_hd4_relu  │ ReLU                   │      0 │
+  46 │ 32  │ model.h4_Cat_hd4_conv │ Conv2d                 │  294 K │
+  47 │ 33  │ model.h4_Cat_hd4_bn   │ BatchNorm2d            │    128 │
+  48 │ 34  │ model.h4_Cat_hd4_relu │ ReLU                   │      0 │
+  49 │ 35  │ model.hd5_UT_hd4      │ Upsample               │      0 │
+  50 │ 36  │ model.hd5_UT_hd4_conv │ Conv2d                 │  589 K │
+  51 │ 37  │ model.hd5_UT_hd4_bn   │ BatchNorm2d            │    128 │
+  52 │ 38  │ model.hd5_UT_hd4_relu │ ReLU                   │      0 │
+  53 │ 39  │ model.conv4d_1        │ Conv2d                 │  921 K │
+  54 │ 40  │ model.bn4d_1          │ BatchNorm2d            │    640 │
+  55 │ 41  │ model.relu4d_1        │ ReLU                   │      0 │
+  56 │ 42  │ model.h1_PT_hd3       │ MaxPool2d              │      0 │
+  57 │ 43  │ model.h1_PT_hd3_conv  │ Conv2d                 │ 36.9 K │
+  58 │ 44  │ model.h1_PT_hd3_bn    │ BatchNorm2d            │    128 │
+  59 │ 45  │ model.h1_PT_hd3_relu  │ ReLU                   │      0 │
+  60 │ 46  │ model.h2_PT_hd3       │ MaxPool2d              │      0 │
+  61 │ 47  │ model.h2_PT_hd3_conv  │ Conv2d                 │ 73.8 K │
+  62 │ 48  │ model.h2_PT_hd3_bn    │ BatchNorm2d            │    128 │
+  63 │ 49  │ model.h2_PT_hd3_relu  │ ReLU                   │      0 │
+  64 │ 50  │ model.h3_Cat_hd3_conv │ Conv2d                 │  147 K │
+  65 │ 51  │ model.h3_Cat_hd3_bn   │ BatchNorm2d            │    128 │
+  66 │ 52  │ model.h3_Cat_hd3_relu │ ReLU                   │      0 │
+  67 │ 53  │ model.hd4_UT_hd3      │ Upsample               │      0 │
+  68 │ 54  │ model.hd4_UT_hd3_conv │ Conv2d                 │  184 K │
+  69 │ 55  │ model.hd4_UT_hd3_bn   │ BatchNorm2d            │    128 │
+  70 │ 56  │ model.hd4_UT_hd3_relu │ ReLU                   │      0 │
+  71 │ 57  │ model.hd5_UT_hd3      │ Upsample               │      0 │
+  72 │ 58  │ model.hd5_UT_hd3_conv │ Conv2d                 │  589 K │
+  73 │ 59  │ model.hd5_UT_hd3_bn   │ BatchNorm2d            │    128 │
+  74 │ 60  │ model.hd5_UT_hd3_relu │ ReLU                   │      0 │
+  75 │ 61  │ model.conv3d_1        │ Conv2d                 │  921 K │
+  76 │ 62  │ model.bn3d_1          │ BatchNorm2d            │    640 │
+  77 │ 63  │ model.relu3d_1        │ ReLU                   │      0 │
+  78 │ 64  │ model.h1_PT_hd2       │ MaxPool2d              │      0 │
+  79 │ 65  │ model.h1_PT_hd2_conv  │ Conv2d                 │ 36.9 K │
+  80 │ 66  │ model.h1_PT_hd2_bn    │ BatchNorm2d            │    128 │
+  81 │ 67  │ model.h1_PT_hd2_relu  │ ReLU                   │      0 │
+  82 │ 68  │ model.h2_Cat_hd2_conv │ Conv2d                 │ 73.8 K │
+  83 │ 69  │ model.h2_Cat_hd2_bn   │ BatchNorm2d            │    128 │
+  84 │ 70  │ model.h2_Cat_hd2_relu │ ReLU                   │      0 │
+  85 │ 71  │ model.hd3_UT_hd2      │ Upsample               │      0 │
+  86 │ 72  │ model.hd3_UT_hd2_conv │ Conv2d                 │  184 K │
+  87 │ 73  │ model.hd3_UT_hd2_bn   │ BatchNorm2d            │    128 │
+  88 │ 74  │ model.hd3_UT_hd2_relu │ ReLU                   │      0 │
+  89 │ 75  │ model.hd4_UT_hd2      │ Upsample               │      0 │
+  90 │ 76  │ model.hd4_UT_hd2_conv │ Conv2d                 │  184 K │
+  91 │ 77  │ model.hd4_UT_hd2_bn   │ BatchNorm2d            │    128 │
+  92 │ 78  │ model.hd4_UT_hd2_relu │ ReLU                   │      0 │
+  93 │ 79  │ model.hd5_UT_hd2      │ Upsample               │      0 │
+  94 │ 80  │ model.hd5_UT_hd2_conv │ Conv2d                 │  589 K │
+  95 │ 81  │ model.hd5_UT_hd2_bn   │ BatchNorm2d            │    128 │
+  96 │ 82  │ model.hd5_UT_hd2_relu │ ReLU                   │      0 │
+  97 │ 83  │ model.conv2d_1        │ Conv2d                 │  921 K │
+  98 │ 84  │ model.bn2d_1          │ BatchNorm2d            │    640 │
+  99 │ 85  │ model.relu2d_1        │ ReLU                   │      0 │
+ 100 │ 86  │ model.h1_Cat_hd1_conv │ Conv2d                 │ 36.9 K │
+ 101 │ 87  │ model.h1_Cat_hd1_bn   │ BatchNorm2d            │    128 │
+ 102 │ 88  │ model.h1_Cat_hd1_relu │ ReLU                   │      0 │
+ 103 │ 89  │ model.hd2_UT_hd1      │ Upsample               │      0 │
+ 104 │ 90  │ model.hd2_UT_hd1_conv │ Conv2d                 │  184 K │
+ 105 │ 91  │ model.hd2_UT_hd1_bn   │ BatchNorm2d            │    128 │
+ 106 │ 92  │ model.hd2_UT_hd1_relu │ ReLU                   │      0 │
+ 107 │ 93  │ model.hd3_UT_hd1      │ Upsample               │      0 │
+ 108 │ 94  │ model.hd3_UT_hd1_conv │ Conv2d                 │  184 K │
+ 109 │ 95  │ model.hd3_UT_hd1_bn   │ BatchNorm2d            │    128 │
+ 110 │ 96  │ model.hd3_UT_hd1_relu │ ReLU                   │      0 │
+ 111 │ 97  │ model.hd4_UT_hd1      │ Upsample               │      0 │
+ 112 │ 98  │ model.hd4_UT_hd1_conv │ Conv2d                 │  184 K │
+ 113 │ 99  │ model.hd4_UT_hd1_bn   │ BatchNorm2d            │    128 │
+ 114 │ 100 │ model.hd4_UT_hd1_relu │ ReLU                   │      0 │
+ 115 │ 101 │ model.hd5_UT_hd1      │ Upsample               │      0 │
+ 116 │ 102 │ model.hd5_UT_hd1_conv │ Conv2d                 │  589 K │
+ 117 │ 103 │ model.hd5_UT_hd1_bn   │ BatchNorm2d            │    128 │
+ 118 │ 104 │ model.hd5_UT_hd1_relu │ ReLU                   │      0 │
+ 119 │ 105 │ model.conv1d_1        │ Conv2d                 │  921 K │
+ 120 │ 106 │ model.bn1d_1          │ BatchNorm2d            │    640 │
+ 121 │ 107 │ model.relu1d_1        │ ReLU                   │      0 │
+ 122 │ 108 │ model.outconv1        │ Conv2d                 │ 11.5 K │
+ 123 │ 109 │ model.final_pool      │ MaxPool2d              │      0 │
+ 124 │ 110 │ train_jaccard         │ MulticlassJaccardIndex │      0 │
+ 125 │ 111 │ train_accuracy        │ MulticlassAccuracy     │      0 │
+ 126 │ 112 │ train_f1score         │ MulticlassF1Score      │      0 │
+ 127 │ 113 │ val_accuracy          │ MulticlassAccuracy     │      0 │
+ 128 │ 114 │ val_auroc             │ MulticlassAUROC        │      0 │
+ 129 │ 115 │ val_f1score           │ MulticlassF1Score      │      0 │
+ 130 └─────┴───────────────────────┴────────────────────────┴────────┘
+ 131 Trainable params: 27.0 M
+ 132 Non-trainable params: 0
+ 133 Total params: 27.0 M 
+
+
+Metrics:
+Val F1: 0.5528
+Val Accuracy: 0.5528
+Train F1: 0.6567
+Train Accuracy: 0.6567

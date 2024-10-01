@@ -38,7 +38,6 @@ def train(options: ESDConfig):
 
     # prepare the data
     datamodule.prepare_data()
-    datamodule.setup(stage="fit")
 
     # create a model params dict to initialize ESDSegmentation
     model_params = {
@@ -72,7 +71,7 @@ def train(options: ESDConfig):
         ModelCheckpoint(
             dirpath=ROOT / "models" / options.model_type,
             filename="{epoch}-{val_loss:.2f}-{other_metric:.2f}",
-            save_top_k=2,
+            save_top_k=0,
             save_last=True,
             verbose=True,
             monitor="val_loss",
@@ -172,12 +171,6 @@ if __name__ == "__main__":
         help="Kernel size of the convolutions",
         type=int,
         default=config.kernel_size,
-    )
-    parser.add_argument(
-        "--batch_size",
-        help="Batch size of datamodule",
-        type=int,
-        default=config.batch_size,
     )
 
     parse_args = parser.parse_args()

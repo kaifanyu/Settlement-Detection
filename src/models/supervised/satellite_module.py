@@ -9,6 +9,9 @@ from src.models.supervised.segmentation_cnn import SegmentationCNN
 from src.models.supervised.unet import UNet
 from src.models.supervised.resnet_transfer import FCNResnetTransfer
 from src.models.supervised.unet3 import UNet_3Plus
+
+import torch.nn.functional as F 
+
 class ESDSegmentation(pl.LightningModule):
     def __init__(self, model_type, in_channels, out_channels, 
                         learning_rate=1e-3, model_params: dict = {}):
@@ -52,8 +55,12 @@ class ESDSegmentation(pl.LightningModule):
     def training_step(self, batch, batch_idx):
         # get sat_img and mask from batch
         sat_img, mask = batch
-        mask = mask.long()
-        
+        # mask = mask.long()
+        mask = mask.float()  # Convert mask to float
+        mask = F.interpolate(mask.unsqueeze(1), size=(400, 400), mode="nearest")
+        mask = mask.squeeze(1).long()  # Convert back to long if necessary
+
+
         # evaluate batch
         out = self(sat_img)
         
@@ -83,8 +90,12 @@ class ESDSegmentation(pl.LightningModule):
     def validation_step(self, batch, batch_idx):
         # get sat_img and mask from batch
         sat_img, mask = batch
-        mask = mask.long()
-        
+        # mask = mask.long()
+
+        mask = mask.float()  # Convert mask to float
+        mask = F.interpolate(mask.unsqueeze(1), size=(400, 400), mode="nearest")
+        mask = mask.squeeze(1).long()  # Convert back to long if necessary
+
         # evaluate batch for validation
         out = self(sat_img)
         
@@ -113,8 +124,7 @@ class ESDSegmentation(pl.LightningModule):
         return loss
     
     def configure_optimizers(self):
-        # initialize optimizer
-        # optimizer = Adam(self.parameters(), lr=self.learning_rate)
-        optimizer = Adam(self.parameters(), lr=self.learning_rate, weight_decay=1e-4)
+        # initialize optimizer with AdamW
+        optimizer = torch.optim.AdamW(self.parameters(), lr=self.learning_rate)
         # return optimizer
         return optimizer

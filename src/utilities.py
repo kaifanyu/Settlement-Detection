@@ -18,7 +18,7 @@ class SatelliteType(Enum):
 
 ROOT = Path.cwd()
 PROJ_NAME = "CS175-spring-2024"
-MODEL = "UNet_3Plus"  # default, valid values are ["UNet", "SegmentationCNN", "FCNResnetTransfer", "UNet_3Plus"] # fmt: skip
+MODEL = "UNet"  # default, valid values are ["UNet", "SegmentationCNN", "FCNResnetTransfer", "UNet_3Plus"] # fmt: skip
 
 
 @dataclass
@@ -66,12 +66,12 @@ class ESDConfig:
     embedding_size: int = 64
     in_channels: int = 99  # num_dates * num_bands
     kernel_size: int = 3
-    learning_rate: float = 1e-4
+    learning_rate: float = 1e-3
     max_epochs: int = 1
     model_path: Path = ROOT / "models" / MODEL / "last.ckpt"
     model_type: str = MODEL
     n_encoders: int = 2
-    num_workers: int = 23
+    num_workers: int = 15
     out_channels: int = 4  # 4 out channels for our 4 classes
     pool_sizes: str = "5,5,2"
     seed: int = 12378921

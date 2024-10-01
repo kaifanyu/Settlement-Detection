@@ -1,0 +1,30 @@
+Checkpoint file:
+https://drive.google.com/file/d/1I66nKZtS_jXQdKYcDERCTEIqu1GrKeow/view?usp=sharing
+
+Model Summary:
+ 9 ┏━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓
+10 ┃    ┃ Name             ┃ Type                   ┃ Params ┃
+11 ┡━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩
+12 │ 0  │ model            │ SegmentationCNN        │  1.2 M │
+13 │ 1  │ model.encoders   │ ModuleList             │  1.2 M │
+14 │ 2  │ model.encoders.0 │ Encoder                │ 94.0 K │
+15 │ 3  │ model.encoders.1 │ Encoder                │  221 K │
+16 │ 4  │ model.encoders.2 │ Encoder                │  885 K │
+17 │ 5  │ model.decoder    │ Conv2d                 │  1.0 K │
+18 │ 6  │ train_jaccard    │ MulticlassJaccardIndex │      0 │
+19 │ 7  │ train_accuracy   │ MulticlassAccuracy     │      0 │
+20 │ 8  │ train_f1score    │ MulticlassF1Score      │      0 │
+21 │ 9  │ val_accuracy     │ MulticlassAccuracy     │      0 │
+22 │ 10 │ val_auroc        │ MulticlassAUROC        │      0 │
+23 │ 11 │ val_f1score      │ MulticlassF1Score      │      0 │
+24 └────┴──────────────────┴────────────────────────┴────────┘
+25 Trainable params: 1.2 M
+26 Non-trainable params: 0
+27 Total params: 1.2 M 
+
+
+Metrics:
+Val F1: 0.5317
+Val Accuracy: 0.5317
+Train F1: 0.5114
+Train Accuracy: 0.5114

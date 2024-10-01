@@ -16,6 +16,7 @@ class Subtile:
         satellite_list: List[xr.DataArray],
         ground_truth: xr.DataArray | None = None,
         slice_size: tuple = (4, 4),
+        parent_tile_id: int = None,
     ):
         """
         This class handles saving and loading of subtiles for a parent image (Tile#).
@@ -26,7 +27,7 @@ class Subtile:
         self.satellite_list = satellite_list
         self.ground_truth = ground_truth
         self.slice_size = slice_size
-        self.parent_tile_id = satellite_list[0].attrs["parent_tile_id"]
+        self.parent_tile_id = satellite_list[0].attrs["parent_tile_id"] if parent_tile_id == None else parent_tile_id
 
     def __calculate_slice_index(self, x: int, y: int, slice_size: tuple, length: tuple):
         # calculate the start and end indices for the slice based

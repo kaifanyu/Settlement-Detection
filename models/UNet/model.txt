@@ -1,0 +1,37 @@
+Checkpoint file:
+https://drive.google.com/file/d/13Qxvev7DPXm1AkAukBFrUx_gitUKdrPD/view?usp=sharing
+
+Model Summary:
+ 9 ┏━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓
+10 ┃    ┃ Name             ┃ Type                   ┃ Params ┃
+11 ┡━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩
+12 │ 0  │ model            │ UNet                   │  1.8 M │
+13 │ 1  │ model.inc        │ DoubleConvHelper       │ 94.3 K │
+14 │ 2  │ model.inc.conv1  │ Conv2d                 │ 57.1 K │
+15 │ 3  │ model.inc.bn1    │ BatchNorm2d            │    128 │
+16 │ 4  │ model.inc.relu   │ ReLU                   │      0 │
+17 │ 5  │ model.inc.conv2  │ Conv2d                 │ 36.9 K │
+18 │ 6  │ model.inc.bn2    │ BatchNorm2d            │    128 │
+19 │ 7  │ model.encoders   │ ModuleList             │  1.1 M │
+20 │ 8  │ model.encoders.0 │ Encoder                │  221 K │
+21 │ 9  │ model.encoders.1 │ Encoder                │  886 K │
+22 │ 10 │ model.decoders   │ ModuleList             │  611 K │
+23 │ 11 │ model.decoders.0 │ Decoder                │  574 K │
+24 │ 12 │ model.decoders.1 │ Decoder                │ 37.6 K │
+25 │ 13 │ model.final_pool │ MaxPool2d              │      0 │
+26 │ 14 │ train_jaccard    │ MulticlassJaccardIndex │      0 │
+27 │ 15 │ train_accuracy   │ MulticlassAccuracy     │      0 │
+28 │ 16 │ train_f1score    │ MulticlassF1Score      │      0 │
+29 │ 17 │ val_accuracy     │ MulticlassAccuracy     │      0 │
+30 │ 18 │ val_auroc        │ MulticlassAUROC        │      0 │
+31 │ 19 │ val_f1score      │ MulticlassF1Score      │      0 │
+32 └────┴──────────────────┴────────────────────────┴────────┘
+33 Trainable params: 1.8 M
+34 Non-trainable params: 0
+35 Total params: 1.8 M 
+
+Metrics:
+Val F1: 0.5428
+Val Accuracy: 0.5428
+Train F1: 0.7033
+Train Accuracy: 0.7027
