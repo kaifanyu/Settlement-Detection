@@ -85,12 +85,6 @@ The data used comes from the IEEE GRSS 2021 ESD dataset. The dataset is composed
 More information can be found at:
 [https://www.grss-ieee.org/community/technical-committees/2021-ieee-grss-data-fusion-contest-track-dse/](https://www.grss-ieee.org/community/technical-committees/2021-ieee-grss-data-fusion-contest-track-dse/)
 
-## Additional Resources
-
-* [Project Poster](https://docs.google.com/presentation/d/1mUELAEvSfLKri0StTymHXN8lPrA660Y1IoNSSWaoG8A/edit#slide=id.p1)
-* [Technical Memorandum](https://docs.google.com/document/d/1YPw295mx0uOh3ytF32s8Eda0QMACDANi3zZajqkPD_Y/edit#heading=h.pwg22b1zfd68)
-* [Project Slides](https://docs.google.com/presentation/d/15fnRyB-LHrglibXVFjYOxkanByDxInItlyZMOs1ytlk/edit#slide=id.g273633b852b_0_93)
-* [Presentation Video](https://drive.google.com/file/d/1owftS_8gut7fpxx7PQ5mKePJ7w4W1_r7/view?usp=sharing)
 ## Acknowledgements
 
 This project makes use of the base Unet3+ implementation described in the following paper:
